@@ -1,0 +1,28 @@
+.carousel-inner{
+    max-height:500px;
+}
+.card{
+    margin: 0 auto;
+    margin-top: -50%;
+}
+
+.carousel-control-prev,.carousel-control-next{
+    margin-top: 15%;
+}
+@media(max-width: 950px){
+    .carousel-control-prev,.carousel-control-next{
+        margin-top: 27%;
+    }    
+}
+@media(max-width: 750px){
+    .carousel-control-prev,.carousel-control-next{
+        margin-top: 45%;
+    }    
+}
+
+@media(max-width: 580px){
+    .carousel-control-prev,.carousel-control-next{
+        margin-top: 65%;
+    }    
+}
+

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { WelcomeComponent } from './Client/welcome/welcome.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { ContactComponent } from './Client/contact/contact.component';
+import { NavComponent } from './Dashboard/nav/nav.component';
 
 const routes: Routes = [
   {
@@ -21,11 +22,30 @@ const routes: Routes = [
   {
     path:'contact',
     component:ContactComponent
+  },
+  {
+    path: 'dashboard',
+    loadChildren: './Dashboard/dash.module#DashModule'
+  },
+  /*
+  {
+    path:'dashboard',
+    component:NavComponent,
+    children: [
+      {
+        path: 'loc',
+        component: LocationComponent,   
+      },
+    ]
   }
+  */
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+    {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -63,27 +63,37 @@
                 </div>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contant_form">
-                <h2 class="text_align_center">SEND MESSAGER</h2>
+                <h2 class="text_align_center">Laisser un message</h2>
                 <div class="form_section">
-                  <form class="form_contant" action="index.html">
+                  <form class="form_contant" [formGroup]="formContact" action="">
                     <fieldset>
                     <div class="row">
-                      <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input class="field_custom" placeholder="Websire URL" type="text">
+                      <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <input class="field_custom" placeholder="Votre adress mail" type="email" formControlName="mail" >
+                              <div *ngIf="formContact.controls['mail'].invalid && (formContact.controls['mail'].dirty || formContact.controls['mail'].touched)" 
+                              class="alert alert-danger" placehoder="erreur">Veuillez saisir un email valide </div> 
                       </div>
                       <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input class="field_custom" placeholder="Your name" type="text">
+                        <input class="field_custom" placeholder="Nom" type="email" formControlName="name" >
+                              <div *ngIf="formContact.controls['name'].invalid && (formContact.controls['name'].dirty || formContact.controls['name'].touched)" 
+                              class="alert alert-danger" placehoder="erreur">Veuillez vérifier votre saisie </div>    
                       </div>
                       <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input class="field_custom" placeholder="Email adress" type="email">
-                      </div>
-                      <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <input class="field_custom" placeholder="Phone number" type="text">
+                        <input class="field_custom" placeholder="Numéro téléphone" type="text" formControlName="tel" >
+                              <div *ngIf="formContact.controls['tel'].invalid && (formContact.controls['tel'].dirty || formContact.controls['tel'].touched)" 
+                              class="alert alert-danger" placehoder="erreur">Veuillez saisir un numéro de 8 chiffre </div> 
                       </div>
                       <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <textarea class="field_custom" placeholder="Messager"></textarea>
+                        <textarea class="field_custom" placeholder="Votre message" formControlName="message" >
+                          <div *ngIf="formContact.controls['message'].invalid && (formContact.controls['message'].dirty || formContact.controls['message'].touched)" 
+                              class="alert alert-danger" placehoder="erreur">Veuillez vérifier votre saisie </div> 
+                        </textarea>
                       </div>
-                      <div class="center"><a class="btn main_bt" href="#">SUBMIT NOW</a></div>
+                      <div class="center">
+                            <button class="btn main_bt" type="submit" [disabled]="formContact.pristine || formContact.invalid" (click)="newContact()" name="action">
+                              Envoyer
+                            </button>
+                      </div>        
                     </div>
                     </fieldset>
                   </form>

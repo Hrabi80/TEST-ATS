@@ -17,6 +17,6 @@ export class ClientService {
     });
   }
   getAllContact(){
-    return this._http.get(this._url+ '/contact');
+    return this._http.get(this._url+ '/api/contact');
   }
 }

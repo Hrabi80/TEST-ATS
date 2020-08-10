@@ -34,7 +34,6 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-          
             ]
           },
           "configurations": {
@@ -128,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "client"
+    }
+  },
+  "defaultProject": "client",
+  "cli": {
+    "analytics": "7c02c890-940b-416e-9422-019d6bcf6b51"
+  }
 }

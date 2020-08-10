@@ -4,6 +4,8 @@ import { WelcomeComponent } from './Client/welcome/welcome.component';
 import { LoginComponent } from './Dashboard/login/login.component';
 import { ContactComponent } from './Client/contact/contact.component';
 import { NavComponent } from './Dashboard/nav/nav.component';
+import { AuthGuard } from './_helper/auth.guard';
+
 
 const routes: Routes = [
   {
@@ -25,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: './Dashboard/dash.module#DashModule'
+    loadChildren: './Dashboard/dash.module#DashModule',
+    canActivate : [AuthGuard]
   },
   /*
   {

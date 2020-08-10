@@ -1,14 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+var cors = require('./cors');
+var authenticate = require('../authenticate');
 const Contacts = require('../models/contact');
 
 const contactRouter = express.Router();
 contactRouter.use(bodyParser.json());
 
-contactRouter.route('/')
-.get((req,res,next)=>{
+contactRouter.route('/api/contact')
+.get(cors.cors,authenticate.verifyUser,(req,res,next)=>{
     Contacts.find({})
     .then((contacts)=>{
         res.status.code=200;
@@ -17,7 +18,9 @@ contactRouter.route('/')
     },(err)=>next(err))
     .catch((err)=>next(err));
 })
-.post((req,res,next)=>{
+contactRouter.route('contact')
+.options(cors.corsWithOptions, (req,res)=>{ res.sendStatus(200); })
+.post(cors.corsWithOptions,(req,res,next)=>{
     Contacts.create(req.body)
     .then((cont)=>{
         console.log('a new message has been recorded',cont);
@@ -27,11 +30,11 @@ contactRouter.route('/')
     },(err)=>next(err))
     .catch((err)=>next(err));
 })
-.put((req,res,next)=>{
+.put(cors.corsWithOptions,(req,res,next)=>{
     res.statusCode = 403;
     res.end('PUT operation not supported on /dishes');
 })
-.delete((req,res,next)=>{
+.delete(cors.corsWithOptions,authenticate.verifyUser,(req,res,next)=>{
     Contacts.remove({})
     .then((resp)=>{
         res.status.Code=200;
@@ -42,7 +45,8 @@ contactRouter.route('/')
 });
 
 contactRouter.route('/:id_mess')
-.get((req,res,next)=>{
+.options(cors.corsWithOptions,authenticate.verifyUser, (req,res)=>{ res.sendStatus(200); })
+.get(cors.cors,(req,res,next)=>{
     Contacts.findById(req.params.id_mess)
     .then((cont)=>{
         res.statusCode=200;
@@ -51,15 +55,15 @@ contactRouter.route('/:id_mess')
     },(err)=>next(err))
     .catch((err)=>next(err))
 })
-.post((req,res,next)=>{
+.post(cors.corsWithOptions,(req,res,next)=>{
     res.statusCode = 403;
     res.end('POST operation not supported on contacts/id');
 })
-.put((req,res,next)=>{
+.put(cors.corsWithOptions,(req,res,next)=>{
     res.statusCode = 403;
     res.end('PUT operation not supported on /contacts/:id');
 })
-.delete((req,res,next)=>{
+.delete(cors.corsWithOptions,authenticate.verifyUser,(req,res,next)=>{
     Contacts.findByIdAndRemove(req.params.id_mess)
     .then((resp)=>{
         res.statusCode=200;

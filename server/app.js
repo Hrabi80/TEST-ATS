@@ -1,21 +1,24 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+const cors = require('cors');
 var logger = require('morgan');
-var session = require('express-session'):
-var FileStore = require('session-file-store')(session);
+var config = require('./config');
+var passport = require('passport');
+//var cookieParser = require('cookie-parser');
+//var session = require('express-session');
+//var FileStore = require('session-file-store')(session);
 
-
+const Contact = require('./models/contact');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactRouter = require('./routes/contacts');
 
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/IdealVerre';
+const url = config.mongoUrl;
 const connect = mongoose.connect(url);
-const Contact = require('./models/contact');
+
 connect.then((db)=>{
   console.log('Connected correctly to server');
   },(err)=>{
@@ -23,14 +26,10 @@ connect.then((db)=>{
 });
 
 var app = express();
-app.all("/*", function(req, res, next){
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  next();
-});
 
 
+
+//app.use(cors()) 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -38,8 +37,15 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
+app.use(passport.initialize());
+/*
+app.use(cors({origin: [
+  "http://localhost:4200"
+], credentials: true}));
+*/
+//app.use(cookieParser());
+/*
 app.use(session({
   name: 'session-id',
   secret: '12345-67890-09876-54321',
@@ -47,9 +53,16 @@ app.use(session({
   resave: false,
   store: new FileStore()
 }));
-
+*/
+app.all("/*", function(req, res, next){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  next();
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+/*
 function auth(req,res,next){
   console.log(req.session);
   if(!req.session.use){
@@ -70,8 +83,17 @@ function auth(req,res,next){
   }
 }
 app.use(auth);
+*/
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/contact',contactRouter);
+/*
+app.all("/*", function(req, res, next){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  next();
+});
+*/
+app.use('',contactRouter);
 
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 interface myData {
   success: boolean,
@@ -36,13 +36,25 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('access_token');
   }
-  
+
   public get loggedIn(): boolean {
     return (localStorage.getItem('access_token') !== null);
   }
 
   public setUserInfo(user){
     localStorage.setItem('userInfo', JSON.stringify(user));
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(msg);
   }
 /*
   public validate(username:string, password:string) {

@@ -27,7 +27,7 @@
               </div>
             </div>
             <div class="float-right">
-              <div class="make_appo"> <a class="btn white_btn" href="make_appointment.html">Make Appointment</a> </div>
+              <div class="make_appo"> <a class="btn white_btn" routerLink="/devis">Prend un devis</a> </div>
             </div>
           </div>
         </div>
@@ -48,20 +48,15 @@
             <div class="menu_side">
               <div id="navbar_menu">
                 <ul class="first-ul">
-                  <li> <a class="active" routerLink="/welcome">Accueil</a>
+                  <li> <a class="active" routerLink="/welcome">Accueil</a></li>
+                  <li> <a>Services</a>
                     <ul>
-                      <li><a href="it_home.html">It Home Page</a></li>
-                      <li><a href="it_home_dark.html">It Dark Home Page</a></li>
+                      <li *ngFor="let item of verre">
+                        <a >{{item.name}}</a>
+                      </li>
                     </ul>
                   </li>
                   <li><a href="it_about.html">About Us</a></li>
-                  <li> <a href="it_service.html">Service</a>
-                    <ul>
-                      <li><a href="it_service_list.html">Services list</a></li>
-                      <li><a href="it_service_detail.html">Services Detail</a></li>
-                    </ul>
-                  </li>
-                 
                   <li> <a href="#">Pages</a>
                     <ul>
                       <li><a href="it_career.html">Career</a></li>

@@ -10,12 +10,15 @@ import { ErrorInterceptor } from './_helper/error.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { DashRoutingModule } from './Dashboard/dash-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Client/header/header.component';
-import { FooterComponent } from './Client/footer/footer.component';
+import { HeaderComponent } from './Client/utils/header/header.component';
+import { FooterComponent } from './Client/utils/footer/footer.component';
 import { WelcomeComponent } from './Client/welcome/welcome.component';
 //import { LoginComponent } from './Dashboard/login/login.component';
 import { AuthGuard } from './_helper/auth.guard'; 
 import { ContactComponent } from './Client/contact/contact.component';
+import { DevisComponent } from './Client/devis/devis.component';
+import { ReqComponent } from './Client/utils/req/req.component';
+import { ProductsComponent } from './Client/products/products.component';
 //import { NavComponent } from './Dashboard/nav/nav.component';
 //import { MessagesComponent } from './Dashboard/messages/messages.component';
 
@@ -28,6 +31,9 @@ import { ContactComponent } from './Client/contact/contact.component';
     WelcomeComponent,
     //LoginComponent,
     ContactComponent,
+    DevisComponent,
+    ReqComponent,
+    ProductsComponent,
    // NavComponent,
    // MessagesComponent,
    

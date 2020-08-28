@@ -1,0 +1,107 @@
+<div class="container">
+
+    <form [formGroup]="form">
+
+      <div class="progress form-group" *ngIf="progress > 0">
+          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+          </div>
+      </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Nom de produit</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="...">
+        </div>
+
+        <div class="form-group">
+          <label>Selectionner la catégorie</label>
+          <select  class="form-control" formControlName="cat">
+            <option *ngFor="let item of categories"  [value]="item._id">
+              {{item.name}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Description de produit</label>
+          <textarea class="form-control" rows="3" formControlName="description">
+          </textarea>
+        </div>
+        <div class="form-group">
+            <label >Ajouter la photo</label>
+            <input type="file" (change)="uploadFile($event)" class="form-control-file">
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Produit similaire 1</label>
+                    <select class="form-control" formControlName="p1">
+                      <option>1</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Produit similaire 2</label>
+                    <select class="form-control" formControlName="p2">
+                      <option>1</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Produit similaire 3</label>
+                    <select class="form-control" formControlName="p3">
+                      <option>1</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Produit similaire 4</label>
+                    <select class="form-control" formControlName="p4">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Produit similaire 5</label>
+                    <select class="form-control" formControlName="p5">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Produit similaire 6</label>
+                    <select class="form-control" formControlName="p6">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+       
+
+          
+          
+          
+          
+          
+
+          <br>
+          <button type="submit" (click)="addProduct()" class="btn btn-primary mb-2">Ajouter</button>
+      </form>
+</div>

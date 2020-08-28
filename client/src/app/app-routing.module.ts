@@ -5,7 +5,8 @@ import { LoginComponent } from './Dashboard/login/login.component';
 import { ContactComponent } from './Client/contact/contact.component';
 import { NavComponent } from './Dashboard/nav/nav.component';
 import { AuthGuard } from './_helper/auth.guard';
-
+import { DevisComponent } from './Client/devis/devis.component';
+import { ProductsComponent } from './Client/products/products.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,14 @@ const routes: Routes = [
   {
     path:'contact',
     component:ContactComponent
+  },
+  {
+    path:'devis',
+    component:DevisComponent
+  },
+  {
+    path:'produits',
+    component:ProductsComponent
   },
   {
     path: 'dashboard',

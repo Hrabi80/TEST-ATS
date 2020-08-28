@@ -14,7 +14,8 @@ const Contact = require('./models/contact');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactRouter = require('./routes/contacts');
-
+var deviRouter = require('./routes/devis');
+var serviceRouter = require('./routes/services');
 const mongoose = require('mongoose');
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
@@ -93,7 +94,9 @@ app.all("/*", function(req, res, next){
   next();
 });
 */
+app.use('',serviceRouter);
 app.use('',contactRouter);
+app.use('',deviRouter);
 
 
 

@@ -3,27 +3,27 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var cors = require('./cors');
 var authenticate = require('../authenticate');
-const Contacts = require('../models/contact');
+const Devis = require('../models/devi');
 
-const contactRouter = express.Router();
-contactRouter.use(bodyParser.json());
+const deviRouter = express.Router();
+deviRouter.use(bodyParser.json());
 
-contactRouter.route('/api/contact')
+deviRouter.route('/api/devis')
 .get(cors.cors,authenticate.verifyUser,(req,res,next)=>{
-    Contacts.find({})
-    .then((contacts)=>{
+    Devis.find({})
+    .then((dev)=>{
         res.status.code=200;
         res.setHeader('Content-Type','application/json');
-        res.json(contacts);
+        res.json(dev);
     },(err)=>next(err))
     .catch((err)=>next(err));
 })
-contactRouter.route('/contact')
+deviRouter.route('devis')
 .options(cors.corsWithOptions, (req,res)=>{ res.sendStatus(200); })
 .post(cors.corsWithOptions,(req,res,next)=>{
-    Contacts.create(req.body)
+    Devis.create(req.body)
     .then((cont)=>{
-        console.log('a new message has been recorded',cont);
+        console.log('a new appointment has been recorded',cont);
         res.status = 200;
         res.setHeader('Content-Type','application/json');
         res.json({success:'success!'});
@@ -32,10 +32,10 @@ contactRouter.route('/contact')
 })
 .put(cors.corsWithOptions,(req,res,next)=>{
     res.statusCode = 403;
-    res.end('PUT operation not supported on /dishes');
+    res.end('PUT operation not supported on /DEVS');
 })
 .delete(cors.corsWithOptions,authenticate.verifyUser,(req,res,next)=>{
-    Contacts.remove({})
+    Devis.remove({})
     .then((resp)=>{
         res.status.Code=200;
         res.setHeader('Content-Type','application/json');
@@ -43,11 +43,11 @@ contactRouter.route('/contact')
     },(err)=>next(err))
     .catch((err)=>next(err));
 });
-
-contactRouter.route('contact/:id_mess')
-.options(cors.corsWithOptions,authenticate.verifyUser, (req,res)=>{ res.sendStatus(200); })
-.get(cors.cors,(req,res,next)=>{
-    Contacts.findById(req.params.id_mess)
+/*
+deviRouter.route('/:id_mess')
+.options(cors.corsWithOptions, (req,res)=>{ res.sendStatus(200); })
+.get(cors.cors,authenticate.verifyUser,(req,res,next)=>{
+    Devis.findById(req.params.id_mess)
     .then((cont)=>{
         res.statusCode=200;
         res.setHeader('Content-Type','application/json');
@@ -57,14 +57,14 @@ contactRouter.route('contact/:id_mess')
 })
 .post(cors.corsWithOptions,(req,res,next)=>{
     res.statusCode = 403;
-    res.end('POST operation not supported on contacts/id');
+    res.end('POST operation not supported on devis/id');
 })
 .put(cors.corsWithOptions,(req,res,next)=>{
     res.statusCode = 403;
-    res.end('PUT operation not supported on /contacts/:id');
+    res.end('PUT operation not supported on /devis/:id');
 })
 .delete(cors.corsWithOptions,authenticate.verifyUser,(req,res,next)=>{
-    Contacts.findByIdAndRemove(req.params.id_mess)
+    Devis.findByIdAndRemove(req.params.id_mess)
     .then((resp)=>{
         res.statusCode=200;
         res.setHeader('Content-Type','application/json');
@@ -72,6 +72,6 @@ contactRouter.route('contact/:id_mess')
     },(err)=>next(err))
     .catch((err)=>next(err));
 });
+*/
 
-
-module.exports = contactRouter;
+module.exports = deviRouter;

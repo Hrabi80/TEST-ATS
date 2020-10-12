@@ -1,14 +1,158 @@
 .carousel-inner{
-    max-height:500px;
+    max-height:480px;
+    object-fit: cover;
 }
-.card{
+/*
+.card1{
     margin: 0 auto;
-    margin-top: -50%;
+    margin-top: -67%;
+    background-color: rgb(39, 39, 39) !important;
+    width: 1420px !important;
+    opacity: 88%;
+    min-height: 200px;
+    margin-left: -30%;
+}
+/*
+.card2{
+    margin: 0 auto;
+    margin-top: -67%;
+    background-color: rgb(56, 56, 56) !important;
+    width: 1420px !important;
+    opacity: 88%;
+    min-height: 200px;
+    margin-left: -30%;
+}
+*/
+
+.card1{
+    margin: 0 auto;
+    margin-top: -52%;
+    background-color: #17a5e9 !important;
+    max-width: 650px;
+    opacity: 88%;
+}
+.card2{
+    margin: 0 auto;
+    margin-top: -52%;
+    background-color: #17a5e9 !important;
+    max-width: 900px;
+    opacity: 88%;
 }
 
+.card3{
+    margin: 0 auto;
+    margin-top: -35%;
+    background-color: #17a5e9 !important;
+    min-width: 600px;
+    opacity: 88%;
+}
+// FOR BIG SCREEN SIZE 
+@media(min-width : 1400px){
+    .card1{
+        margin: 0 auto;
+        margin-top: -70%;
+        background-color:rgb(39, 39, 39) !important;
+        width: 1800px !important;
+        opacity: 88%;
+        min-height: 200px;
+        margin-left: -30%;
+    }
+    .card2{
+        margin: 0 auto;
+        margin-top: -70%;
+        background-color: rgb(39, 39, 39) !important;
+        width: 1800px !important;
+        opacity: 88%;
+        min-height: 200px;
+        margin-left: -30%;
+    }
+}
+@media(max-width: 1399px) and (min-width: 1329px){
+    .card1{
+        width: 1700px !important;
+
+    }
+    .card2{
+        width: 1700px !important;
+    }
+}
+@media(min-width : 1700px){
+    .card1{
+        width: 1983px !important;
+        margin-top: -75%;
+    }
+    .card2{
+        width: 1983px !important;
+        margin-top: -75%;
+    }
+}
+
+// FOR MIN SCREEN SIZE 
+@media(max-width : 1270px) and (min-width:1166){
+    .card1{
+        width: 1983px !important;
+        margin-top: -60%;
+        margin-left: -60%;
+    }
+    .card2{
+        width: 1983px !important;
+        margin-top: -60%;
+        margin-left: -60%;
+    }
+}
+@media(max-width : 1269px) and (min-width:1000px){
+    .card1{
+        width: 1983px !important;
+        margin-top: -80%;
+        margin-left: -80%;
+    }
+    .card2{
+        width: 1983px !important;
+        margin-top: -80%;
+        margin-left: -80%;
+    }
+}
+@media(max-width : 999px) and (min-width:801px){
+    .card1{
+        width: 1100px !important;
+        margin-top: -80%;
+        margin-left: -40%;
+    }
+    .card2{
+        width: 1183px !important;
+        margin-top: -80%;
+        margin-left: -40%;
+    }
+}
+
+@media(max-width : 800px){
+    .card1{
+        margin: 0 auto;
+        margin-top: -60%;
+        background-color: #17a5e9 !important;
+        width: 800px !important;
+        opacity: 88%;
+        min-height: 200px;
+        margin-left: -30%;
+    }
+}
+
+
+
+.card-text{
+    color: whitesmoke;
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    
+}
 .carousel-control-prev,.carousel-control-next{
     margin-top: 15%;
 }
+
+
+
+
 @media(max-width: 950px){
     .carousel-control-prev,.carousel-control-next{
         margin-top: 27%;

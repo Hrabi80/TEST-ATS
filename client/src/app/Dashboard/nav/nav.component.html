@@ -5,7 +5,7 @@
 <nav class="main-menu">
             <ul>
                 <li>
-                    <a href="http://justinfarrow.com">
+                    <a routerLink="/dashboard">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                             Dashboard
@@ -20,22 +20,31 @@
                             Ajouter un produit 
                         </span>
                     </a>
-                    
                 </li>
+
                 <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-list fa-2x"></i>
+                    <a routerLink="/dashboard/addTechnic">
+                        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
                         <span class="nav-text">
-                            Forms
+                            Ajouter un service 
                         </span>
                     </a>
                     
                 </li>
+              
                 <li class="has-subnav">
                     <a routerLink="/dashboard/service">
                        <i class="fa fal fa-qrcode fa-2x"></i>
                         <span class="nav-text">
-                            Liste des service
+                            Catégorie des produits
+                        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a routerLink="/dashboard/services">
+                       <i class="fa fal fa-qrcode fa-2x"></i>
+                        <span class="nav-text">
+                            Catégorie des servicess
                         </span>
                     </a>
                    
@@ -49,26 +58,26 @@
                     </a>
                 </li>
                 <li>
-                   <a href="#">
+                   <a routerLink="/dashboard/addGallery">
                        <i class="fa fa-table fa-2x"></i>
                         <span class="nav-text">
-                            Tables
+                            Ajouter gallegie
                         </span>
                     </a>
                 </li>
                 <li>
-                   <a href="#">
-                        <i class="fa fa-map-marker fa-2x"></i>
-                        <span class="nav-text">
-                            Maps
-                        </span>
-                    </a>
-                </li>
+                    <a routerLink="/dashboard/ListGallery">
+                        <i class="fa fa-table fa-2x"></i>
+                         <span class="nav-text">
+                             Voir gallerie
+                         </span>
+                     </a>
+                 </li>
                 <li>
                     <a href="#">
                        <i class="fa fa-info fa-2x"></i>
                         <span class="nav-text">
-                            Documentation
+                            Devis
                         </span>
                     </a>
                 </li>

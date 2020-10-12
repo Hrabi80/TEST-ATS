@@ -1,0 +1,25 @@
+<!-- section -->
+<div class="section padding_layout_1 service_list">
+    <div class="container">
+      <div class="row">
+
+
+     
+        <!---->
+        <div *ngFor="let item of gal" class="col-md-4 service_blog margin_bottom_50">
+          <div class="full">
+            <div class="service_img"> <img class="img-responsive" src="{{item.photo}}" alt="#" /> </div>
+            <div class="service_cont">
+              <h3 class="service_head">{{item.title}}</h3>
+              <p>{{item.description}}</p>
+              <div class="bt_cont"> <a class="btn sqaure_bt">Supprimer</a> </div>
+
+            </div>
+          </div>
+        </div>
+       
+ 
+      </div>
+    </div>
+  </div>
+  <!-- end section -->

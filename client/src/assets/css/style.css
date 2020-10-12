@@ -955,7 +955,8 @@ header .right_bt .btn {
 }
 
 .logo img {
-	height: 80px;
+	height: 90px;
+	width: 300px;
 }
 
 .header_style_1 .header_top {
@@ -3460,7 +3461,8 @@ footer ul.social_icons {
 	-------------------------------------------------------------------*/
 
 .service_blog_inner .icon img {
-	width: 65px;
+	width: 200px;
+	min-height: 300px;
 }
 
 .service_blog_inner h4.service-heading {

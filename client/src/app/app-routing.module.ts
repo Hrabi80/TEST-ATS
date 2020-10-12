@@ -7,6 +7,8 @@ import { NavComponent } from './Dashboard/nav/nav.component';
 import { AuthGuard } from './_helper/auth.guard';
 import { DevisComponent } from './Client/devis/devis.component';
 import { ProductsComponent } from './Client/products/products.component';
+import { TechnicsComponent } from './Client/technics/technics.component';
+import { GalleryComponent } from './Client/gallery/gallery.component';
 
 const routes: Routes = [
   {
@@ -31,13 +33,21 @@ const routes: Routes = [
     component:DevisComponent
   },
   {
-    path:'produits',
+    path:'produits/:id',
     component:ProductsComponent
+  },
+  {
+    path:'techniques/:id',
+    component:TechnicsComponent
   },
   {
     path: 'dashboard',
     loadChildren: './Dashboard/dash.module#DashModule',
     canActivate : [AuthGuard]
+  },
+  {
+    path:'galerie',
+    component:GalleryComponent
   },
   /*
   {

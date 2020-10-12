@@ -9,14 +9,17 @@ import swal from 'sweetalert2';
 })
 export class ContactComponent implements OnInit {
   formContact :FormGroup;
-  
+  res : any=[];
   constructor(
               private _service : ClientService,
               private  _fb: FormBuilder,) 
             { }
 
   ngOnInit(): void {
-
+    this._service.getAllService()
+      .subscribe((res)=>{
+        this.res=res; 
+      })
     this.formContact = this._fb.group({
       name:  ['', [Validators.required, Validators.minLength(3)]],
       mail:  ['', [Validators.required, Validators.email]],

@@ -4,6 +4,7 @@ import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashModule } from './Dashboard/dash.module';
 import { FormGroup, FormControl } from '@angular/forms'
+
 import { JwtInterceptor } from './_helper/jwt.interceptor';
 import { ErrorInterceptor } from './_helper/error.interceptor';
 
@@ -19,6 +20,9 @@ import { ContactComponent } from './Client/contact/contact.component';
 import { DevisComponent } from './Client/devis/devis.component';
 import { ReqComponent } from './Client/utils/req/req.component';
 import { ProductsComponent } from './Client/products/products.component';
+import { TechnicsComponent } from './Client/technics/technics.component';
+import { GalleryComponent } from './Client/gallery/gallery.component';
+import { AboutComponent } from './Client/about/about.component';
 //import { NavComponent } from './Dashboard/nav/nav.component';
 //import { MessagesComponent } from './Dashboard/messages/messages.component';
 
@@ -34,6 +38,9 @@ import { ProductsComponent } from './Client/products/products.component';
     DevisComponent,
     ReqComponent,
     ProductsComponent,
+    TechnicsComponent,
+    GalleryComponent,
+    AboutComponent,
    // NavComponent,
    // MessagesComponent,
    

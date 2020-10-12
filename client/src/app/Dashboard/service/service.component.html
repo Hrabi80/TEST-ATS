@@ -1,6 +1,6 @@
 <div class="container">
     <div class="card">
-        <h5 class="card-header">Ajouter un service</h5>
+        <h5 class="card-header">Ajouter un nouvelle catégorie des produits</h5>
         <div class="card-body">
                 <form [formGroup]="form">
                     <div class="row">
@@ -25,7 +25,7 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nom de service</th>
+            <th scope="col">Categorie des produits</th>
             <th scope="col">exploiter</th>
             <th scope="col">mis a jour</th>
             <th scope="col">delete</th>
@@ -36,7 +36,11 @@
           <tr *ngFor="let item of verre">
             <th scope="row"></th>
             <td>{{item.name}}</td>
-            <td><span class="badge badge-warning">Exploiter</span></td>
+            <td>
+              <a routerLink="/dashboard/service/listProducts/{{item._id}}">
+              <span class="badge badge-warning">Exploiter</span>
+              </a>
+            </td>
             <td>
                 <a type="button" class="btn btn-info" routerLink="/dashboard/service/update/{{item._id}}" >
                     <i class="fa fa-pencil" aria-hidden="true"></i></a>

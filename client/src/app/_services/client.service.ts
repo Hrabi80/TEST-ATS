@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: 'root'
@@ -20,6 +22,12 @@ export class ClientService {
     return this._http.get(this._url+ '/api/contact');
   }
 
+  getGallery():Observable<any>{
+    return this._http.get(this._url+'/gallery').pipe(
+      catchError(this.errorMgmt)
+    );
+  }
+
   sendDevis(data){
     const headers = new HttpHeaders()
     .set('Authorization', 'my-auth-token')
@@ -32,7 +40,31 @@ export class ClientService {
   getAllService(){
     return this._http.get(this._url+'/service');
   }
+  getAllTechnics():Observable<any>{
+    return this._http.get(this._url+'/category');
+  }
 
-  
-  
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+  }
+
+  getProductByCategory(id): Observable<any>{
+    return this._http.get(this._url+'/product/'+id).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+  getTechnicsByCategory(id): Observable<any>{
+    return this._http.get(this._url+'/technic/'+id).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
 }

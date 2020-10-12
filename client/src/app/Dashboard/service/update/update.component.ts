@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder , FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder , FormGroup, FormsModule } from '@angular/forms';
 import { AdminService } from 'src/app/_services/admin.service';
 import { ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
@@ -44,7 +44,5 @@ export class UpdateComponent implements OnInit {
       )
     })
   }
-
-
 
 }

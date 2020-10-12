@@ -57,7 +57,7 @@ export class AddProductComponent implements OnInit {
     formData.append("p5", this.form.get('p5').value);
     formData.append("p6", this.form.get('p6').value);
 
-    this._service.addProduct(formData)
+    this._service.addProduct(formData,this.form.get('cat').value)
       .subscribe((event: HttpEvent<any>) => {
           switch (event.type) {
             case HttpEventType.Sent:

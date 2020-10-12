@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const productSchema = new Schema({
+const technicSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: {
       type: String,
@@ -15,22 +15,22 @@ const productSchema = new Schema({
     photo: {
       type: String,
     },
-    p1: {
+    t1: {
       type: String,
     },
-    p2: {
+    t2: {
       type: String,
     },
-    p3: {
+    t3: {
       type: String,
     },
-    p4: {
+    t4: {
       type: String,
     },
-    p5: {
+    t5: {
       type: String,
     },
-    p6: {
+    t6: {
       type: String,
     },
   }, {
@@ -39,7 +39,7 @@ const productSchema = new Schema({
 
 
 
-const serviceSchema = new Schema({
+const categorySchema = new Schema({
     name: {
         type:String,
         required:true,
@@ -48,7 +48,7 @@ const serviceSchema = new Schema({
         type:String,
         required:true,
     },
-    products:[productSchema],
+    technics:[technicSchema],
 
 }
 ,{
@@ -56,6 +56,6 @@ const serviceSchema = new Schema({
 });
 
 
-var Services = mongoose.model('Service',serviceSchema);
+var Categories = mongoose.model('Category',categorySchema);
 
-module.exports = Services;
+module.exports = Categories;

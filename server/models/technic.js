@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define Schema
-let productSchema = new Schema({
+
+let technicSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
@@ -13,32 +13,32 @@ let productSchema = new Schema({
   },
   cat: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Service' 
+    ref: 'Category' 
   },
   photo: {
     type: String,
   },
-  p1: {
+  t1: {
     type: String,
   },
-  p2: {
+  t2: {
     type: String,
   },
-  p3: {
+  t3: {
     type: String,
   },
-  p4: {
+  t4: {
     type: String,
   },
-  p5: {
+  t5: {
     type: String,
   },
-  p6: {
+  t6: {
     type: String,
   },
 }, {
     timestamps : true
   })
-var Products = mongoose.model('Product',productSchema);
+var Technics = mongoose.model('Technic',technicSchema);
 
-module.exports = Products;
+module.exports = Technics;

@@ -3,14 +3,14 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/user');
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
-var jwt = require('jsonwebtoken');
+var jwt = require('jsonwebtoken'); // generate token 
 
 
 var config = require('./config.js');
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate())); // auth() by passport - local -mongoose instead of write it by yourself 
+passport.serializeUser(User.serializeUser());  // to be stored 
+passport.deserializeUser(User.deserializeUser()); // to extract information when request comes to the server
 
 exports.getToken = function(user) {
     return jwt.sign(user, config.secretKey,
@@ -37,4 +37,5 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
         });
     }));
 
+//verify an income user and authenticate it based on token
 exports.verifyUser = passport.authenticate('jwt',{session: false});

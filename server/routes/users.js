@@ -8,7 +8,7 @@ var User = require('../models/user');
 
 router.use(bodyParser.json());
 router.post('/signup',cors.corsWithOptions, (req, res, next) => {
-  User.register(new User({username: req.body.username}), 
+  User.register(new User({username: req.body.username}), //refister() by passport mongoose plugin
     req.body.password, (err, user) => {
     if(err) {
       res.statusCode = 500;
@@ -37,7 +37,7 @@ router.post('/signup',cors.corsWithOptions, (req, res, next) => {
     }
   });
 });
-
+//use passpoert.authentificate as a middlware // only req and res
 router.post('/login',cors.corsWithOptions, passport.authenticate('local'), (req, res) => {
   
   var token = authenticate.getToken({_id: req.user._id});

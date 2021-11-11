@@ -1,0 +1,20 @@
+
+<div class="list-products-container">
+    <div class="product-container" *ngFor="let prod of products">
+        <div class="product-image-container">
+            <img src="{{prod.imageUrl}}" alt="product image">
+        </div>
+        <div class="product-details">
+            {{product.name}}
+            {{product.description}}
+            {{product.price}}
+            {{product.reviewAVG}}
+        </div>
+        <button routerLink="product-details/:id">See details</button>
+    </div>
+</div>
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>

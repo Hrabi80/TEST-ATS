@@ -1,41 +1,48 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define Schema
+
+const reviewSchema = new Schema({
+  value:{
+      type:Number,
+      min: 1,
+      max: 5,
+      required: true
+  },
+  content:{
+      type:String,
+      required: true
+  },
+  author:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User' 
+  }
+},{
+  timestamps: true
+});
+
+// Define product Schema
 let productSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  name: {
+  productName: {
     type: String,
     required:true
   },
   description: {
     type: String,
   },
-  cat: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Service' 
+  price: {
+    type: Number,
   },
-  photo: {
+  category: {
     type: String,
   },
-  p1: {
+  imageUrl: {
     type: String,
   },
-  p2: {
-    type: String,
-  },
-  p3: {
-    type: String,
-  },
-  p4: {
-    type: String,
-  },
-  p5: {
-    type: String,
-  },
-  p6: {
-    type: String,
-  },
+  reviews: [reviewSchema],
+ 
+ 
 }, {
     timestamps : true
   })

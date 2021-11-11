@@ -5,27 +5,29 @@ const cors = require('cors');
 var logger = require('morgan');
 var config = require('./config');
 var passport = require('passport');
-//var cookieParser = require('cookie-parser');
-//var session = require('express-session');
-//var FileStore = require('session-file-store')(session);
+const Products = require('/models/products');
+const fetch   = require('node-fetch');
 
-const Contact = require('./models/contact');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var productRouter = require('./routes/products');
-var galleryRouter = require('./routes/galleries');
-var technicRouter = require('./routes/technics');
-var contactRouter = require('./routes/contacts');
-var deviRouter = require('./routes/devis');
-var serviceRouter = require('./routes/services');
-var categoryRouter = require('./routes/categories');
+
 const mongoose = require('mongoose');
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 
 connect.then((db)=>{
   console.log('Connected correctly to server');
+  app.get('/https://tech.dev.ats-digital.com/api/products', function (req, res) {
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        Products.create(req.body)
+    })
+    .catch(err => {
+        res.send(err);
+    });
+});
   },(err)=>{
   console.log(err);
 });
@@ -34,8 +36,6 @@ var app = express();
 
 
 
-//app.use(cors()) 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -52,17 +52,13 @@ app.all("/*", function(req, res, next){
   next();
 });
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('',serviceRouter);
+
 app.use('',productRouter);
-app.use('',categoryRouter);
-app.use('',technicRouter);
-app.use('',galleryRouter)
-app.use('',contactRouter);
-app.use('',deviRouter);
+
 
 
 

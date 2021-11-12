@@ -13,7 +13,7 @@ export class ListProductsComponent implements OnInit {
   page=0;
   limit=0;
   offset=0;
-  pageSize= 100;
+  pageSize= 20;
   ngOnInit(): void {
     this.service.getAllProductPagination(this.page,this.limit).then((res:any)=>{
       this.products = res.product;
